@@ -87,7 +87,10 @@
         // Add form to page and submit it to open the OAuth 2.0 endpoint.
         document.body.appendChild(form);
         form.submit();
-      }
+     }
+      // document.getElementById("sign-up").onclick = function () {
+      //   location.href = "https://www.greengrassfreelancer.com/sign_in.html";
+      // }
     </script>
     
     <!-- <button id="sign-in-or-out-button"
@@ -119,7 +122,7 @@
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 
                 <li><a href="#"><img src="images/greengrass-removebg-preview.png" alt="" height="50px" width="50px"></a></li>
-                <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
+                <li><a href="index.html" class="nav-link px-2 text-secondary">Home</a></li>
                 <li><a href="#" class="nav-link px-2 text-white">Explore</a></li>
                 <li><a href="#" class="nav-link px-2 text-white">Career Advices</a></li>
                 <li><a href="faq_page/index.html" class="nav-link px-2 text-white">FAQs</a></li>
@@ -132,7 +135,7 @@
     
             <div class="text-end">
               <button id="sign-in-or-out-button" onclick="getOauthorized()" class="btn btn-outline-primary me-2 text-white">Login</button>
-              <button class="btn btn-warning">Sign-up</button>
+              <a href="sign_in_page/sign_in.html" class="btn btn-warning">Sign up<a>
             </div>
           </div>
         </div>

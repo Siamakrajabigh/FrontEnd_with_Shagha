@@ -19,88 +19,108 @@
                         <div class="row">
                             <div class="col-md-12 pe-0 ">
                                 <div class="form-left h-100 py-5 px-5 ">
-                                    <form action="" class="row g-4">
+                                    <div class="row g-4">
+                                    <!-- <form onsubmit="submitRegisterForm()" > -->
                                         <h3 class="mb-3 text-center">Register</h3>
-                                            <div class="col-12">
-                                                <label>Firstname<span class="text-danger">*</span></label>
-                                                <div class="input-group">
-                                                    <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
-                                                    <input type="text" class="form-control" id="firstName" placeholder="Enter Firstname">
-                                                </div>
+                                        <div class="col-12">
+                                            <label>username<span class="text-danger">*</span></label>
+                                            <div class="input-group">
+                                                <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
+                                                <input type="text" class="form-control" id="username" placeholder="Enter username" />
                                             </div>
-                                            <div class="col-12">
-                                                <label>Lastname<span class="text-danger">*</span></label>
-                                                <div class="input-group">
-                                                    <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
-                                                    <input type="text" class="form-control" id="lastName" placeholder="Enter Lastname">
-                                                </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <label>email<span class="text-danger">*</span></label>
+                                            <div class="input-group">
+                                                <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
+                                                <input type="text" class="form-control" id="email" placeholder="Enter Email" />
                                             </div>
-                                            <div class="col-12">
-                                                <label>Username<span class="text-danger">*</span></label>
-                                                <div class="input-group">
-                                                    <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
-                                                    <input type="text" class="form-control" id="username" placeholder="Enter Username">
-                                                </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <label>skills<span class="text-danger">*</span></label>
+                                            <div class="input-group">
+                                                <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
+                                                <input type="text" class="form-control" id="skills" placeholder="Enter skills" />
                                             </div>
-                                            <div class="col-12">
-                                                <label>Password<span class="text-danger">*</span></label>
-                                                <div class="input-group">
-                                                    <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
-                                                    <input type="text" class="form-control" id="password" placeholder="Enter Password">
-                                                </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <label>categories<span class="text-danger">*</span></label>
+                                            <div class="input-group">
+                                                <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
+                                                <input type="text" class="form-control" id="categories" placeholder="Enter categories" />
                                             </div>
-                                            <div class="col-12">
-                                                <button type="submit" class="btn btn-primary px-4 float-end mt-4" onclick="submitRegisterForm()">Sign In</button>
-                                            </div>
-                                    </form>
+                                        </div>
+                                        <div class="col-12"> <!-- type="submit" -->
+                                            <button onclick="submitRegisterForm()" class="btn btn-primary px-4 float-end mt-4">Submit</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
+                </div>
             </div>
         </div>
     </div>
-    <script> 
-    var submitRegisterForm = function() {
-        var params = '?firstName=' + document.getElementById('firstName').value + 
-                    '&lastName=' + document.getElementById('lastName').value +
-                    '&username=' + document.getElementById('username').value +
-                    '&password=' + document.getElementById('password').value;
-        console.log(params);
+    <script>
+        let url = 'https://coen6311-380422.nn.r.appspot.com/createServiceProviderProfile'
 
+        /* var submitRegisterForm = async function() {
+            let debugVar = null
+            let response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'text/html'
+                },
+                body: JSON.stringify(params)
+            });
 
-        fetch('https://coen6311-380422.nn.r.appspot.com/createServiceProviderProfile', {
-        method: 'POST',
-        headers: {
-        'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(params)
-        })
-        .then(response => response.json())
-        .then(responseData => {
-         // Do something with the response data
+            if (response.ok) {
+                let responseText = await response.text();
+                console.log(responseText);
+            } 
+            else {
+                alert("HTTP-Error: " + response.status);
+            }
+        
+            // fetch(url, {
+            //     method: 'POST',
+            //     headers: {
+            //     'Content-Type': 'application/json'
+            //     },
+            //     body: JSON.stringify(params)
+            // })
+            // .then(response =>{debugvar=response.text(); return response.text()})
+            // .then(responseData => {
+            //  // Do something with the response data
+            //  console.log(responseData)
 
-        })
-        .catch(error => {
-         // Handle any errors that occur during the API request
-        });
+            // })
+            // .catch(error => {
+            //  // Handle any errors that occur during the API request
+            // });
+        }*/
 
-        // var updateXHR = new XMLHttpRequest()
-        // updateXHR.onload = function() {
-        //     console.log('Got back the update');
-        //     console.log(updateXHR.response);
-        //     debugger;
-        //     signupClick(updateXHR.response);
-        // };
-        // updateXHR.open('GET', '/signupAsEndUser'+params, true);
-        // updateXHR.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-        // updateXHR.responseType = 'json'; // parses the response == JSON.parse(req.responseText);
-        // updateXHR.send(null);
-    }
+        let submitRegisterForm = function() {
+            alert('HELLO!');
+            var params = '?username=' + document.getElementById('username').value + 
+                        '&email=' + document.getElementById('email').value +
+                        '&skills=' + document.getElementById('skills').value +
+                        '&categories=' + document.getElementById('categories').value;
+            console.log(params);
+            let xhr = new XMLHttpRequest();
+            xhr.onload = function() {
+                console.log(xhr.response);
+                console.alert('Got back the update');
+            };
+            xhr.open('GET', url+params, true);
+            xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+            xhr.responseType = 'text/html';
+            xhr.send(null);
+           alert('XHR Request sent!');
+        }
+        
     </script>
-
-    <!-- Bootstrap JS -->
-     
+  
 </body>
 </html>
