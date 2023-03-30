@@ -13,7 +13,6 @@ body {
   justify-content: center;
   flex-direction: column;
   margin: 50px 0;
-  width: 100%;
 }
 
 .wrapper {
@@ -69,10 +68,7 @@ body {
   line-height: 1.5rem;
 }
 
-.question.active{
-
-} 
-.answercont {
+.question.active + .answercont {
 }
 
 @media screen and (max-width: 790px){

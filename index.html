@@ -5,94 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GreenGrass</title>
-    <link rel="icon" href="../images/greengrass-removebg-preview.png" type="images/x-icon">
+
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/d557b1238d.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <script src="../components/header.js" type="text/javascript" defer></script>
-    <script src="../components/footer.js"></script>
-    <script>
-      var YOUR_CLIENT_ID = '449761760826-pfa1o2a0cquanh1erpeejmvv8nr1r5s2.apps.googleusercontent.com';
-      var YOUR_REDIRECT_URI = 'https://www.greengrassfreelancer.com/faq_page/index.html';
-      var fragmentString = location.hash.substring(1);
-    
-      // Parse query string to see if page request is coming from OAuth 2.0 server.
-      var params = {};
-      var regex = /([^&=]+)=([^&]*)/g, m;
-      while (m = regex.exec(fragmentString)) {
-        params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
-      }
-      if (Object.keys(params).length > 0) {
-        localStorage.setItem('oauth2-test-params', JSON.stringify(params) );
-        if (params['state'] && params['state'] == 'test_login') {
-          getOauthorized();
-        }
-      }
-
-      // If there's an access token, try an API request.
-      // Otherwise, start OAuth 2.0 flow.
-      function getOauthorized() {
-        var params = JSON.parse(localStorage.getItem('oauth2-test-params'));
-        if (params && params['access_token']) {
-          var xhr = new XMLHttpRequest();
-          xhr.open('GET',
-              'https://www.googleapis.com/drive/v3/about?fields=user&' +
-              'access_token=' + params['access_token']);
-          xhr.onreadystatechange = function (e) {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-              console.log(xhr.response);
-            } else if (xhr.readyState === 4 && xhr.status === 401) {
-              // Token invalid, so prompt for user permission.
-              oauth2SignIn();
-            }
-          };
-          xhr.send(null);
-        } else {
-          oauth2SignIn();
-        }
-      }
-    
-
-       /*
-       * Create form to request access token from Google's OAuth 2.0 server.
-       */
-       function oauth2SignIn() {
-        // Google's OAuth 2.0 endpoint for requesting an access token
-        var oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
-    
-        // Create element to open OAuth 2.0 endpoint in new window.
-        var form = document.createElement('form');
-        form.setAttribute('method', 'GET'); // Send as a GET request.
-        form.setAttribute('action', oauth2Endpoint);
-    
-        // Parameters to pass to OAuth 2.0 endpoint.
-        var params = {'client_id': "449761760826-pfa1o2a0cquanh1erpeejmvv8nr1r5s2.apps.googleusercontent.com",
-                      'redirect_uri': 'https://www.greengrassfreelancer.com/faq_page/index.html', // "https://oauth2.googleapis.com/token",
-                      'scope': 'https://www.googleapis.com/auth/drive.metadata.readonly',
-                      'state': 'test_login',
-                      'include_granted_scopes': 'true',
-                      'response_type': 'token'};
-    
-        // Add form parameters as hidden input values.
-        for (var p in params) {
-          var input = document.createElement('input');
-          input.setAttribute('type', 'hidden');
-          input.setAttribute('name', p);
-          input.setAttribute('value', params[p]);
-          form.appendChild(input);
-        }
-    
-        // Add form to page and submit it to open the OAuth 2.0 endpoint.
-        document.body.appendChild(form);
-        form.submit();
-     }
-      // document.getElementById("sign-up").onclick = function () {
-      //   location.href = "https://www.greengrassfreelancer.com/sign_in.html";
-      // }
-    </script>
-    
+    <script src="/components/footer.js"></script>
+  
     <!-- <button id="sign-in-or-out-button"
             style="margin-left: 25px" onclick="getOauthorized()">Sign In/Authorize</button> -->
     <!-- <button id="revoke-access-button" -->
@@ -121,12 +42,12 @@
     
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 
-                <li><a href="#"><img src="images/greengrass-removebg-preview.png" alt="" height="50px" width="50px"></a></li>
-                <li><a href="index.html" class="nav-link px-2 text-secondary">Home</a></li>
+                <li><a href="index.html"><img src="images/GG.jpeg" alt="" height="50px" width="50px"></a></li>
+                <li><a href="index.html" class="nav-link px-2 text-white">Home</a></li>
                 <li><a href="#" class="nav-link px-2 text-white">Explore</a></li>
                 <li><a href="#" class="nav-link px-2 text-white">Career Advices</a></li>
-                <li><a href="faq_page/index.html" class="nav-link px-2 text-white">FAQs</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+                <li><a href="./faq_page/faq.html" class="nav-link px-2 text-white">FAQs</a></li>
+                <li><a href="./about_page/about_page.html" class="nav-link px-2 text-white">About</a></li>
             </ul>
     
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
@@ -134,26 +55,13 @@
             </form>
     
             <div class="text-end">
-              <button id="sign-in-or-out-button" onclick="getOauthorized()" class="btn btn-outline-primary me-2 text-white">Login</button>
-              <a href="sign_in_page/sign_in.html" class="btn btn-warning">Sign up<a>
+              <a href="login_page/index.html" class="btn btn-warning">Login<a></a>
+              <!-- <button id="sign-in-or-out-button" onclick="getOauthorized()" class="btn btn-outline-primary me-2 text-white">Login</button> -->
+              <a href="create_account_page/index.html" class="btn btn-warning">Create Account<a>
             </div>
           </div>
         </div>
     </header>
-    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-        <symbol id="cpu-fill" viewBox="0 0 16 16">
-          <path d="M6.5 6a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
-          <path d="M5.5.5a.5.5 0 0 0-1 0V2A2.5 2.5 0 0 0 2 4.5H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2A2.5 2.5 0 0 0 4.5 14v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14a2.5 2.5 0 0 0 2.5-2.5h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14A2.5 2.5 0 0 0 11.5 2V.5a.5.5 0 0 0-1 0V2h-1V.5a.5.5 0 0 0-1 0V2h-1V.5a.5.5 0 0 0-1 0V2h-1V.5zm1 4.5h3A1.5 1.5 0 0 1 11 6.5v3A1.5 1.5 0 0 1 9.5 11h-3A1.5 1.5 0 0 1 5 9.5v-3A1.5 1.5 0 0 1 6.5 5z"/>
-        </symbol>
-        <symbol id="toggles2" viewBox="0 0 16 16">
-          <path d="M9.465 10H12a2 2 0 1 1 0 4H9.465c.34-.588.535-1.271.535-2 0-.729-.195-1.412-.535-2z"/>
-          <path d="M6 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 1a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm.535-10a3.975 3.975 0 0 1-.409-1H4a1 1 0 0 1 0-2h2.126c.091-.355.23-.69.41-1H4a2 2 0 1 0 0 4h2.535z"/>
-          <path d="M14 4a4 4 0 1 1-8 0 4 4 0 0 1 8 0z"/>
-        </symbol>
-        <symbol id="tools" viewBox="0 0 16 16">
-          <path d="M1 0L0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.356 3.356a1 1 0 0 0 1.414 0l1.586-1.586a1 1 0 0 0 0-1.414l-3.356-3.356a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0zm9.646 10.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708zM3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11z"/>
-        </symbol>
-    </svg>
 
     <main>
         <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -164,7 +72,7 @@
             </div>
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="../images/photo-1617142021386-ac8f0f5aff7a.webp" alt="" width="100%">
+                <img src="/images/photo-1617142021386-ac8f0f5aff7a.webp" alt="" width="100%">
                 <div class="container">
                   <div class="carousel-caption text-start">
                     <h1>Find The Best Freelancer Job</h1>
@@ -174,7 +82,7 @@
                 </div>
               </div>
               <div class="carousel-item">
-                <img src="../images/Skagsanden-Blue-2.webp" alt="" width=100%>
+                <img src="/images/Skagsanden-Blue-2.webp" alt="" width=100%>
                 <div class="container">
                   <div class="carousel-caption">
                     <h1>Explore Remote Jobs</h1>
@@ -184,7 +92,7 @@
                 </div>
               </div>
               <div class="carousel-item">
-                <img src="../images/Faroe-Islands-2018-19-Final.webp" alt="" width=100%>
+                <img src="/images/Faroe-Islands-2018-19-Final.webp" alt="" width=100%>
                 <div class="container">
                   <div class="carousel-caption text-end">
                     <h1>Direct Contact</h1>
